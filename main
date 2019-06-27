@@ -1,0 +1,173 @@
+animal_list = list()
+total_weight = 0
+
+
+class Animals:
+    def __init__(self, pet, name, voice, weight):
+        self.pet = pet
+        self.name = name
+        self.eat_status = 'голоден'
+        self.voice = voice
+        self.weight = weight
+
+    def feed(self):
+        self.eat_status = 'сыт(а)'
+        print(self.pet.title() + ' ' + self.name + ' сейчас ' + self.eat_status)
+
+    def identify_by_voice(self):
+        print('Если животное издает звук ' + self.voice + ' значит это животное - ' + self.pet)
+
+
+#  def total_animals_weight(self):
+#    total_weight += self.weight
+
+
+class Carrying_eggs(Animals):
+    def collect_eggs(self):
+        print('Яйца, которые снес(ла) ' + self.pet + ' ' + self.name + ' собраны')
+
+
+class Goose(Carrying_eggs):
+    def __init__(self, name, weight):
+        self.pet = 'гусь'
+        self.name = name
+        self.voice = 'Га-га-га'
+        self.weight = weight
+        self.eat_status = 'голоден'
+        # print('Вес всех животных составляет ' + str(total_animals_weight) + ' кг.')
+
+
+goose_1 = Goose('Серый', 5)
+animal_list.append(goose_1)
+
+goose_2 = Goose('Белый', 7)
+animal_list.append(goose_2)
+
+
+class Chiken(Carrying_eggs):
+    def __init__(self, name, weight):
+        self.pet = 'курица'
+        self.name = name
+        self.voice = 'Ко-ко-ко'
+        self.weight = weight
+        self.eat_status = 'голоден'
+
+
+chiken_1 = Chiken('Ко-ко', 2)
+animal_list.append(chiken_1)
+
+chiken_2 = Chiken('Кукареку', 3)
+animal_list.append(chiken_2)
+
+
+class Duck(Carrying_eggs):
+    def __init__(self, name, weight):
+        self.pet = 'утка'
+        self.name = name
+        self.voice = 'Кря-кря'
+        self.weight = weight
+        self.eat_status = 'голоден'
+
+
+duck_1 = Duck('Кряква', 5)
+animal_list.append(duck_1)
+
+
+class Milking(Animals):
+    def milk(self, milk_value):
+        print(self.pet.title() + ' ' + self.name + ' подоена . Получено ' + str(milk_value) + ' литров молока')
+
+
+class Cow(Milking):
+    def __init__(self, name, weight):
+        #    super().__init__()
+        self.pet = 'корова'
+        self.voice = 'Мууу'
+        self.name = name
+        self.weight = weight
+        self.eat_status = 'голоден'
+
+
+cow_1 = Cow('Манька', 250)
+animal_list.append(cow_1)
+
+
+class Goat(Milking):
+    def __init__(self, name, weight):
+        self.pet = 'коза'
+        self.voice = 'Меее'
+        self.name = name
+        self.weight = weight
+        self.eat_status = 'голоден'
+
+
+class Sheep(Animals):
+    def __init__(self, name, weight):
+        self.pet = 'овца'
+        self.voice = 'Беее'
+        self.name = name
+        self.weight = weight
+        self.eat_status = 'голоден'
+
+    def cut(self):
+        print(self.pet + ' ' + self.name + ' пострижена.')
+
+
+sheep_1 = Sheep('Барашек', 70)
+animal_list.append(sheep_1)
+
+sheep_2 = Sheep('Кудрявый', 52)
+animal_list.append(sheep_2)
+
+goat_1 = Goat('Рога', 54)
+animal_list.append(goat_1)
+
+goat_2 = Goat('Копыта', 60)
+animal_list.append(goat_2)
+
+goose_1.feed()
+goose_1.identify_by_voice()
+goose_1.collect_eggs()
+
+goose_2.feed()
+goose_2.identify_by_voice()
+goose_2.collect_eggs()
+
+goat_1.feed()
+goat_1.identify_by_voice()
+goat_1.milk(14)
+
+goat_2.feed()
+goat_2.identify_by_voice()
+goat_2.milk(12)
+
+cow_1.feed()
+cow_1.identify_by_voice()
+cow_1.milk(21)
+
+duck_1.feed()
+duck_1.identify_by_voice()
+duck_1.collect_eggs
+print(duck_1.eat_status)
+
+sheep_1.feed()
+sheep_1.identify_by_voice()
+sheep_1.cut()
+
+sheep_2.feed()
+sheep_2.cut()
+
+chiken_1.collect_eggs()
+chiken_1.feed()
+chiken_1.identify_by_voice()
+
+animal_weight_list = list()
+
+for animal in animal_list:
+    total_weight += animal.weight
+    animal_weight_list.append(animal.weight)
+
+max_weight = max(animal_weight_list)
+
+print('Суммарный вес всех животных на ферме ' + str(total_weight) + ' кг.')
+print('Вес самого тяжелого животного ' + str(max_weight) + ' кг.')
